@@ -4,7 +4,7 @@ import java.util.Scanner;
  * This class is responsible for controlling the Treasure Hunter game.<p>
  * It handles the display of the menu and the processing of the player's choices.<p>
  * It handls all the display based on the messages it receives from the Town object. <p>
- *
+ *l
  * This code has been adapted from Ivan Turner's original program -- thank you Mr. Turner!
  */
 
