@@ -54,6 +54,7 @@ public class TreasureHunter {
         } else  if (hard.equals("test")) {
             hunter = new Hunter(name, 100);
             hardMode = false;
+            hunter.populateKitForTestMode();
 
         }
 

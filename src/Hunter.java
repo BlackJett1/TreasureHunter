@@ -135,7 +135,13 @@ public class Hunter {
         }
         return printableKit;
     }
-
+    public void populateKitForTestMode() {
+        addItem("water");
+        addItem("rope");
+        addItem("machete");
+        addItem("horse");
+        addItem("boat");
+    }
     /**
      * @return A string representation of the hunter.
      */
