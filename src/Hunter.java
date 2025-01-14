@@ -35,8 +35,10 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            gold = 0;
+            System.out.println("As your money reached below 0, you became broke and sadly that's the end for you, goodbye :3");
+            System.exit(0);
         }
+
     }
 
     /**
