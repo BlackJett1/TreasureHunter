@@ -3,7 +3,7 @@
  * The Town is designed to manage all the things a Hunter can do in town.
  * This code has been adapted from Ivan Turner's original program -- thank you Mr. Turner!
  */
-
+import java. util. Random;
 public class Town {
     // instance variables
     private Hunter hunter;
@@ -110,6 +110,21 @@ public class Town {
                 printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW +  goldDiff + Colors.RESET + " gold.";
                 hunter.changeGold(-goldDiff);
             }
+        }
+    }
+    public void digForGold() {
+        Random randomNum = new Random();
+        if (hunter.hasItemInKit("shovel")) {
+            int num = randomNum.nextInt(100);
+            if (num > 50) {
+                printMessage +="\nYou dig but only found dirt";
+            } else if (num < 50) {
+                hunter.changeGold(randomNum.nextInt(20));
+                printMessage +="\nYou dug up "+(randomNum.nextInt(20)+" gold");
+
+            }
+        } else {
+            System.out.println("\nYou can't dig for gold without a shovel");
         }
     }
 
