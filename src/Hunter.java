@@ -18,7 +18,7 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[6]; // only 5 possible items can be stored in kit
+        kit = new String[7]; // only 5 possible items can be stored in kit
         gold = startingGold;
     }
 
@@ -144,6 +144,7 @@ public class Hunter {
         addItem("horse");
         addItem("boat");
         addItem("boots");
+        addItem("shovel");
     }
     /**
      * @return A string representation of the hunter.
