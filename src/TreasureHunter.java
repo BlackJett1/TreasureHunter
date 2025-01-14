@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean samurai = false;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -56,10 +57,15 @@ public class TreasureHunter {
             hardMode = false;
             hunter.populateKitForTestMode();
 
+        } else if (hard.equals("s")){
+            hunter = new Hunter(Colors.BLUE +"Samurai " + name + Colors.RESET, 20);
+            hardMode = false;
+            samurai = true;
+        }
         }
 
 
-    }
+
 
     /**
      * Creates a new town and adds the Hunter to it.
