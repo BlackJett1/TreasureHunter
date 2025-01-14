@@ -9,13 +9,17 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
+    private boolean hasDugInCurrentTown = false;
+    private int goldAmount = 0;
 
-    /**
-     * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
-     *
-     * @param hunterName The hunter's name.
-     * @param startingGold The gold the hunter starts with.
-     */
+
+    public void setDugInTown(boolean status) {
+        this.hasDugInCurrentTown = status;
+    }
+
+    public boolean hasDugInTown() {
+        return this.hasDugInCurrentTown;
+    }
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
         kit = new String[7]; // only 5 possible items can be stored in kit

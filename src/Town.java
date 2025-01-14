@@ -114,18 +114,23 @@ public class Town {
     }
     public void digForGold() {
         Random randomNum = new Random();
-        if (hunter.hasItemInKit("shovel")) {
-            int num = randomNum.nextInt(100);
-            if (num > 50) {
-                printMessage +="\nYou dig but only found dirt";
-            } else if (num < 50) {
-                hunter.changeGold(randomNum.nextInt(20));
-                printMessage +="\nYou dug up "+(randomNum.nextInt(20)+" gold");
-
-            }
-        } else {
-            System.out.println("\nYou can't dig for gold without a shovel");
+        if (hunter.hasDugInTown()) {
+            printMessage += "\nYou already dug for gold in this town.";
+            return;
         }
+        if (!hunter.hasItemInKit("shovel")) {
+            printMessage += "\nYou can't dig for gold without a shovel.";
+            return;
+        }
+        int num = randomNum.nextInt(100);
+        if (num < 50) {
+            int goldAmount = randomNum.nextInt(20);
+            hunter.changeGold(goldAmount);
+            printMessage += "\nYou dug up " + goldAmount + " gold!";
+        } else {
+            printMessage += "\nYou dug but only found dirt.";
+        }
+        hunter.setDugInTown(true);
     }
 
     public String infoString() {
