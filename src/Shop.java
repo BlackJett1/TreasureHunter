@@ -15,6 +15,7 @@ public class Shop {
     private static final int BOAT_COST = 20;
     private static final int BOOTS_COST = 5;
     private static final int SHOVEL_COST = 8;
+    private static final int SWORD_COST = 0;
     // static variables
     private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -48,9 +49,12 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+            if (cost == -1) {
                 System.out.println("We ain't got none of those.");
-            } else {
+            } else if (hunter.hasItemInKit("sword")) {
+                System.out.println("*looking at your sword, the shop keeper says: * Hey im feeling very generous today you can just have it for free.");
+                buyItem(item);
+            }else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
                 if (option.equals("y")) {
@@ -89,6 +93,9 @@ public class Shop {
         str += "Boat: " + BOAT_COST + " gold\n";
         str += "Boots: " + BOOTS_COST + " gold\n";
         str += "Shovel: " + SHOVEL_COST+ " gold\n";
+        if (TreasureHunter.samurai){
+            str += "Sword: " + SWORD_COST+ " gold\n";
+        }
         return str;
     }
 
@@ -101,7 +108,9 @@ public class Shop {
         int costOfItem = checkMarketPrice(item, true);
         if (customer.buyItem(item, costOfItem)) {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
-        } else {
+        } else if (customer.hasItemInKit("sword")) {
+            System.out.println("you got it for free because of your fierce samurai aura");
+        }else{
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
         }
     }

@@ -10,14 +10,16 @@ import java.util.Scanner;
 
 public class TreasureHunter {
     // static variables
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);;
 
     // instance variables
     private Town currentTown;
-    private Hunter hunter;
+    static Hunter hunter;
     private boolean hardMode;
     private  boolean easyMode;
-    private boolean samurai = false;
+    public static boolean samurai = false;
+
+
 
     /**
      * Constructs the Treasure Hunter game.
