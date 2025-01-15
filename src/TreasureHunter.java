@@ -102,7 +102,7 @@ public class TreasureHunter {
             markdown = 1;
             toughness = 0.1;
             allowItemBreak= false;
-        }else {
+        } else {
            allowItemBreak = true;
         }
 
