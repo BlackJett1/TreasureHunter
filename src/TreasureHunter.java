@@ -18,9 +18,6 @@ public class TreasureHunter {
     private boolean hardMode;
     private  boolean easyMode;
     public static boolean samurai = false;
-
-
-    private boolean samurai = false;
     private  static boolean allowItemBreak = true;
 
     private  static boolean checkItemBreak(){
