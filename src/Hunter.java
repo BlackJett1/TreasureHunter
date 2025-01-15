@@ -10,7 +10,7 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private boolean hasDugInCurrentTown = false;
-    private int goldAmount = 0;
+
 
 
     public void setDugInTown(boolean status) {

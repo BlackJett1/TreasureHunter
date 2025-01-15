@@ -20,7 +20,15 @@ public class TreasureHunter {
     public static boolean samurai = false;
 
 
+    private boolean samurai = false;
+    private  static boolean allowItemBreak = true;
 
+    private  static boolean checkItemBreak(){
+        if(!allowItemBreak){
+            return false;
+        }
+        return  Town.checkItemBreak();
+    }
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -81,6 +89,8 @@ public class TreasureHunter {
     /**
      * Creates a new town and adds the Hunter to it.
      */
+
+
     private void enterTown() {
         double markdown = 0.5;
         double toughness = 0.4;
@@ -90,6 +100,13 @@ public class TreasureHunter {
 
             // and the town is "tougher"
             toughness = 0.75;
+        }
+        else if (easyMode){
+            markdown = 1;
+            toughness = 0.1;
+            allowItemBreak= false;
+        }else {
+           allowItemBreak = true;
         }
 
         // note that we don't need to access the Shop object
@@ -107,9 +124,6 @@ public class TreasureHunter {
         // constructor for Town, but this illustrates another way to associate
         // an object with an object of a different class
         currentTown.hunterArrives(hunter);
-        if (easyMode){
-
-        }
     }
 
     /**
