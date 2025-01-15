@@ -18,13 +18,13 @@ public class TreasureHunter {
     private boolean hardMode;
     private  boolean easyMode;
     public static boolean samurai = false;
-    private  static boolean allowItemBreak = true;
+    private static boolean allowItemBreak = true;
 
-    private  static boolean checkItemBreak(){
-        if(!allowItemBreak){
+    private static boolean checkItemBreak() {
+        if (!allowItemBreak) {
             return false;
         }
-        return  Town.checkItemBreak();
+        return Town.checkItemBreak();
     }
     /**
      * Constructs the Treasure Hunter game.
@@ -61,6 +61,8 @@ public class TreasureHunter {
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("y")) {
             hardMode = true;
+        } else if (hard.equals("e")) {
+            easyMode = true;
         } else  if (hard.equals("test")) {
             hunter = new Hunter(name, 100);
             hardMode = false;
@@ -73,10 +75,8 @@ public class TreasureHunter {
             easyMode = false;
             samurai = true;
         }
-        else  if (hard.equals("e")) {
+        if (easyMode) {
             hunter = new Hunter(name, 40);
-            easyMode = true;
-
         }
     }
 
@@ -101,9 +101,9 @@ public class TreasureHunter {
         else if (easyMode){
             markdown = 1;
             toughness = 0.1;
-            allowItemBreak= false;
+            allowItemBreak = false;
         } else {
-           allowItemBreak = true;
+            allowItemBreak = true;
         }
 
         // note that we don't need to access the Shop object
