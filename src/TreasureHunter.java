@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private  boolean easyMode;
     private boolean samurai = false;
 
     /**
@@ -26,6 +27,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        easyMode = false;
     }
 
     /**
@@ -48,21 +50,28 @@ public class TreasureHunter {
 
         hunter = new Hunter(name, 20);
 
-        System.out.print("Hard mode? (y/n/test): ");
+        System.out.print("Hard mode? (y/n/e/test): ");
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("y")) {
             hardMode = true;
         } else  if (hard.equals("test")) {
             hunter = new Hunter(name, 100);
             hardMode = false;
+            easyMode = false;
             hunter.populateKitForTestMode();
 
         } else if (hard.equals("s")){
             hunter = new Hunter(Colors.BLUE +"Samurai " + name + Colors.RESET, 20);
             hardMode = false;
+            easyMode = false;
             samurai = true;
         }
+        else  if (hard.equals("e")) {
+            hunter = new Hunter(name, 40);
+            easyMode = true;
+
         }
+    }
 
 
 
@@ -96,6 +105,9 @@ public class TreasureHunter {
         // constructor for Town, but this illustrates another way to associate
         // an object with an object of a different class
         currentTown.hunterArrives(hunter);
+        if (easyMode){
+
+        }
     }
 
     /**
