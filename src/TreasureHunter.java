@@ -18,14 +18,8 @@ public class TreasureHunter {
     private boolean hardMode;
     private  boolean easyMode;
     public static boolean samurai = false;
-    private static boolean allowItemBreak = true;
+    private static boolean allowItemBreak;
 
-    private static boolean checkItemBreak() {
-        if (!allowItemBreak) {
-            return false;
-        }
-        return Town.checkItemBreak();
-    }
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -87,6 +81,12 @@ public class TreasureHunter {
      * Creates a new town and adds the Hunter to it.
      */
 
+    public static boolean checkItemBreak() {
+        if (!allowItemBreak) {
+            return false;
+        }
+        return Town.checkItemBreak();
+    }
 
     private void enterTown() {
         double markdown = 0.5;
@@ -98,7 +98,8 @@ public class TreasureHunter {
             // and the town is "tougher"
             toughness = 0.75;
         }
-        else if (easyMode){
+        else if (easyMode) {
+
             markdown = 1;
             toughness = 0.1;
             allowItemBreak = false;
