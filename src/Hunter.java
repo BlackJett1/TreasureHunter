@@ -10,11 +10,16 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private boolean hasDugInCurrentTown = false;
-
+    private String[] collectedTreasure = new String[3];
+    public static boolean hasHuntedInCurrentTown = false;
 
 
     public void setDugInTown(boolean status) {
         this.hasDugInCurrentTown = status;
+    }
+
+    public void setHuntedInTown(boolean status) {
+        this.hasHuntedInCurrentTown = status;
     }
 
     public boolean hasDugInTown() {
@@ -25,6 +30,11 @@ public class Hunter {
         kit = new String[8]; // only 5 possible items can be stored in kit
         gold = startingGold;
     }
+
+    public boolean hasHuntedInTown() {
+        return this.hasHuntedInCurrentTown;
+    }
+
 
     //Accessors
     public String getHunterName() {
@@ -104,7 +114,7 @@ public class Hunter {
      * @param item The item to be added to the kit.
      * @return true if the item is not in the kit and has been added.
      */
-    private boolean addItem(String item) {
+    public boolean addItem(String item) {
         if (!hasItemInKit(item)) {
             int idx = emptyPositionInKit();
             kit[idx] = item;
@@ -112,6 +122,15 @@ public class Hunter {
         }
         return false;
     }
+    public boolean addTreasure(String item) {
+        if (!hasItemInKit(item)) {
+            int idx = emptyPositionInCollectedTreasure();
+            collectedTreasure[idx] = item;
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * Checks if the kit Array has the specified item.
@@ -121,6 +140,16 @@ public class Hunter {
      */
     public boolean hasItemInKit(String item) {
         for (String tmpItem : kit) {
+            if (item.equals(tmpItem)) {
+                // early return
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasTreasure(String item) {
+        for (String tmpItem : collectedTreasure) {
             if (item.equals(tmpItem)) {
                 // early return
                 return true;
@@ -146,6 +175,19 @@ public class Hunter {
         }
         return printableKit;
     }
+
+    public String getTreasure() {
+        String printableKit = "";
+        String space = " ";
+
+        for (String item : collectedTreasure) {
+            if (item != null) {
+                printableKit += item + space;
+            }
+        }
+        return printableKit;
+    }
+
     public void populateKitForTestMode() {
         addItem("water");
         addItem("rope");
@@ -162,6 +204,9 @@ public class Hunter {
         String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
         if (!kitIsEmpty()) {
             str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
+        }
+        if  (!treasureIsEmpty()) {
+            str += " and " + Colors.GREEN + getTreasure() + Colors.RESET;
         }
         return str;
     }
@@ -196,6 +241,14 @@ public class Hunter {
         }
         return true;
     }
+    private boolean treasureIsEmpty() {
+        for (String string : collectedTreasure) {
+            if (string != null) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * Finds the first index where there is a null value.
@@ -205,6 +258,15 @@ public class Hunter {
     private int emptyPositionInKit() {
         for (int i = 0; i < kit.length; i++) {
             if (kit[i] == null) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private int emptyPositionInCollectedTreasure() {
+        for (int i = 0; i < collectedTreasure.length; i++) {
+            if (collectedTreasure[i] == null) {
                 return i;
             }
         }
