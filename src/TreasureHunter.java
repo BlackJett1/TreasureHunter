@@ -18,7 +18,7 @@ public class TreasureHunter {
     private boolean hardMode;
     private  boolean easyMode;
     public static boolean samurai = false;
-    private static boolean allowItemBreak;
+    public static boolean allowItemBreak;
 
     /**
      * Constructs the Treasure Hunter game.
