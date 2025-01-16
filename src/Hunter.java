@@ -205,8 +205,11 @@ public class Hunter {
         if (!kitIsEmpty()) {
             str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
         }
-        if  (!treasureIsEmpty()) {
-            str += " and " + Colors.GREEN + getTreasure() + Colors.RESET;
+        if (!treasureIsEmpty()) {
+            str += "\nTreasures found: " + Colors.GREEN + getTreasure() + Colors.RESET;
+        } else {
+            // If there are no treasures found, display 'none'
+            str += "\nTreasures found: none";
         }
         return str;
     }
