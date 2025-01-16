@@ -68,10 +68,11 @@ public class Town {
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
-            if (checkItemBreak()) {
+            if (TreasureHunter.allowItemBreak && checkItemBreak()) {
                 hunter.removeItemFromKit(item);
                 printMessage += "\nUnfortunately, you lost your " + item + ".";
             }
+
             return true;
         }
 
@@ -172,7 +173,7 @@ public class Town {
      *
      * @return true if the item broke.
      */
-    public static boolean checkItemBreak() {
+    private static boolean checkItemBreak() {
         double rand = Math.random();
         return (rand < 0.5);
     }
