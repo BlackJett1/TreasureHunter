@@ -81,13 +81,6 @@ public class TreasureHunter {
      * Creates a new town and adds the Hunter to it.
      */
 
-    public static boolean checkItemBreak() {
-        if (!allowItemBreak) {
-            return false;
-        }
-        return Town.checkItemBreak();
-    }
-
     private void enterTown() {
         double markdown = 0.5;
         double toughness = 0.4;
