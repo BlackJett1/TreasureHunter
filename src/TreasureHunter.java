@@ -71,10 +71,8 @@ public class TreasureHunter {
         }
         if (easyMode) {
             hunter = new Hunter(name, 40);
-        } else {
-            System.out.println("Invalid option");
-            System.exit(0);
         }
+
     }
 
 
