@@ -10,7 +10,7 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private boolean hasDugInCurrentTown = false;
-    private String[] collectedTreasure = new String[3];
+    public static String[] collectedTreasure = new String[3];
     public static boolean hasHuntedInCurrentTown = false;
 
 

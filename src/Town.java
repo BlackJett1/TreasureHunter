@@ -195,5 +195,9 @@ public class Town {
             hunter.addTreasure(townTreasure);
             hunter.setHuntedInTown(true);
         }
+        if (!(Hunter.collectedTreasure[0] == null || Hunter.collectedTreasure[1] == null || Hunter.collectedTreasure[2] == null)){
+            System.out.println("GOOD JOB YOU FOUND ALL THE TREASURES!!!");
+            System.exit(0);
+        }
     }
 }
