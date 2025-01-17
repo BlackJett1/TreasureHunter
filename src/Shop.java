@@ -52,7 +52,7 @@ public class Shop {
             if (hunter.hasItemInKit("sword")) {
                 System.out.println("*looking at your sword, the shop keeper says: * Hey im feeling very generous today you can just have it for free.");
                 buyItem(item);
-            }else if (item.equals("sword")){
+            }else if (item.equals("sword") && TreasureHunter.samurai == true){
                 buyItem(item);
             } else if (cost == 0) {
                 System.out.println("We ain't got none of those.");
