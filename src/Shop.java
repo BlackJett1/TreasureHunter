@@ -49,12 +49,15 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == -1) {
-                System.out.println("We ain't got none of those.");
-            } else if (hunter.hasItemInKit("sword")) {
+            if (hunter.hasItemInKit("sword")) {
                 System.out.println("*looking at your sword, the shop keeper says: * Hey im feeling very generous today you can just have it for free.");
                 buyItem(item);
-            }else {
+            }else if (item.equals("sword")){
+                buyItem(item);
+            } else if (cost == 0) {
+                System.out.println("We ain't got none of those.");
+
+            } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
                 if (option.equals("y")) {
